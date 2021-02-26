@@ -1,4 +1,6 @@
 Flask
+Flask-SocketIO
+Flask-Cors
 aiohttp==3.7.3
 astroid==2.3.0
 async-timeout==3.0.1
