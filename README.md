@@ -49,5 +49,12 @@ Here are some known problems that I ran across on working this project:
 5. I might also implment a feature where if a person won, there would be big trophy that appears on the page showing the person won.
 6. I might also implement a feature where there would two board working at the same time for users to play the game.
 
-Here are some technical issues I ran across working on this project:
-
+Here are some technical issues that I ran across working on this project:
+1. I socket.io was not working so I went office hours and TA Kristianna was able to help me out.
+2. My Heroku was not deploying properly so I checked in slack and other classmates of mine were having the same problem but I saw how they resolved it and so did I.
+3. I also ran into a problem where I could not change my origin name so I went on google and https://xenovation.com/blog/source-control-management/git/how-to-change-remote-git-repository helped me out.
+4. I again ran into the issue where I did not the different types of colors in CSS so I went to HW4 and this link https://material-ui.com/customization/color/#2014-material-design-color-palettes provided by the professor helped me out on how to change my colors. 
+5. I wanted to change borders for my board but did not know how but https://www.w3schools.com/css/css_border.asp helped me on how to change them.
+6. I also ran into a issue where my baord was not changing to X but when I saw slack, I saw some of my classmates where having the same issue but professor broke up the steps and then I got it. 
+7. I also did not know how to show and hide the board but in the lecture of Thursday, professor showed it to us and I was able to figure it out.
+8. I ran into an issue where my buildpacks was not working when creating my app onto heroku but when I asked my slack, one of classmates helped me out and I got that function to work sucessfully.
