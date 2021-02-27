@@ -41,8 +41,13 @@ Here are my step by step process on how I did this project:
 39.  I did this so now other users can play my game outside of cloud now.
 40.  In the end, I created this readme file other people to follow how I did this project.
 
-Here are some known problems that I ran acorss on working this project:
-
+Here are some known problems that I ran across on working this project:
+1. I had a lot of trouble using react and how react works different from other languages, but I need to get more used to that.
+2. I was not able to get where the spectators can login and would not be able to play the game.
+3. I need to get more used to socket because setting it up was tough was for me.
+4. I might implment a feature where the when the game finished, there would be line that goes across the baord on how the person won.
+5. I might also implment a feature where if a person won, there would be big trophy that appears on the page showing the person won.
+6. I might also implement a feature where there would two board working at the same time for users to play the game.
 
 Here are some technical issues I ran across working on this project:
 
