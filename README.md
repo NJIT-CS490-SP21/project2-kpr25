@@ -48,6 +48,7 @@ Here are some known problems that I ran across on working this project:
 4. I might implment a feature where the when the game finished, there would be line that goes across the baord on how the person won.
 5. I might also implment a feature where if a person won, there would be big trophy that appears on the page showing the person won.
 6. I might also implement a feature where there would two board working at the same time for users to play the game.
+7. Could not deploy app on Heroku, asked TA Kristianna and professor for help too but finished everything else on the project.
 
 Here are some technical issues that I ran across working on this project:
 1. I socket.io was not working so I went office hours and TA Kristianna was able to help me out.
