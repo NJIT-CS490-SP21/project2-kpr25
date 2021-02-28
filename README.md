@@ -28,18 +28,16 @@ Here are my step by step process on how I did this project:
 26. So, in App.js file, I emitted an event called game to the server. I Include data on which cell was clicked on my board.
 27. After that, in my app.py, I added a new event listener called game that prints out whatever data was passed in the event.
 28. After that I updated the  event listenerso that when the server actually emits an event to the rest of the clients with data of the cell that was clicked.
-29. In my Board.js file, II add an event listener oof socket.on in useEffect for my click event to be emitted by server and I set that up with my name game.
+29. In my Board.js file, I add an event listener oof socket.on in useEffect for my click event to be emitted by server and I set that up with my name game.
 30. So now, whenever the user clicks a button on the board in one broweser it would also be clicked on the other broweser.
 31. I copied the same exact steps for my socket to pass my login button so both brosers can see who has logged in.
 32. I also coplied the same exact steps for my socket to pass my restart button so both browesers can see if one person restarted the game or not.
 33. After all of that was set up I has to odc make my webpage to look pretty instead of plane white.
 34. So I added some really cool features in my App.css file to change the colors, borders, textboxs, and buttons colors for my page.
 35. I even added a really nice font for when the user logs into the page.
-36.  After that i had to deploy my app outside of cloud 9 so I used Heroku to set that ip. 
-37.  So, I npm install 0g heroku on my cloud 9 and add my Procfile and the requirements.txt file to create the deployment.
-38.  Aftter that I deployed my app on to heroku:
-39.  I did this so now other users can play my game outside of cloud now.
-40.  In the end, I created this readme file other people to follow how I did this project.
+36.  After that i had to deploy my app outside of cloud 9 so I used Heroku to set that up. 
+37.  So, I npm install -g heroku on my cloud 9 and add my Procfile and the requirements.txt file to create the deployment.
+38.  In the end, I created this readme file other people to follow how I did this project.
 
 Here are some known problems that I ran across on working this project:
 1. I had a lot of trouble using react and how react works different from other languages, but I need to get more used to that.
