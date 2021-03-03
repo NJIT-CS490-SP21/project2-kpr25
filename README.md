@@ -37,7 +37,9 @@ Here are my step by step process on how I did this project:
 35. I even added a really nice font for when the user logs into the page.
 36.  After that i had to deploy my app outside of cloud 9 so I used Heroku to set that up. 
 37.  So, I npm install -g heroku on my cloud 9 and add my Procfile and the requirements.txt file to create the deployment.
-38.  In the end, I created this readme file other people to follow how I did this project.
+38.  After I instealled heroku ran the app.
+39.  Here is my link to Heroku: https://afternoon-spire-03938.herokuapp.com/
+40.  In the end, I created this readme file other people to follow how I did this project.
 
 Here are some known problems that I ran across on working this project:
 1. I had a lot of trouble using react and how react works different from other languages, but I need to get more used to that.
