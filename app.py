@@ -63,6 +63,7 @@ def on_chat(data):
     """A dummy docstring."""
     print(str(data))
     socketio.emit('login', data, broadcast=True, include_self=False)
+    
 
 @socketio.on('join')
 def on_join(data):

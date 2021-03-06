@@ -27,7 +27,7 @@ function App() {
         socket.emit('game', { game: Copy, xNext: !NextX });
     };
 
-    function TheButton(){
+    function TheRestartButton(){
         const Restart = setBoard;
         setBoard(Array(9).fill(null))
         socket.emit('Restart', { Start: Restart });
@@ -72,7 +72,6 @@ function App() {
       console.log(data);
       setBoard(data.game);
       setNextMove(data.xNext);
-          
       });
     }, []);
     
@@ -94,14 +93,13 @@ function App() {
             <div class="placement">
             {isShown === true ? (
             <div>
-            <div>*Login before clicking play!*</div>
-            <input class= "textbox" ref= {inputRef} type='text'/>
-            <button class= "button" onClick={() => onClickButton()}>Login</button>
             <div>
-            <h3> Join the Leaderboard </h3>
+            <div> Join the Leaderboard </div>
             <input class= "textbox" ref= {joinRef} type='text'/>
             <button class= "button" onClick={() => onClickJoin()}>Join</button>
-            {userList.map((user, index) => <ListItem key={index} name={user} />)}
+            <div>*Login with the same name before clicking play!*</div>
+            <input class= "textbox" ref= {inputRef} type='text'/>
+            <button class= "button" onClick={() => onClickButton()}>Login</button>
             </div>
             </div>
             ) : (
@@ -121,7 +119,7 @@ function App() {
                 {winner ? 'Winner is: ' + winner : 
                 'The Next Player: ' + (NextX ? 'X' : 'O')}
                 </p>
-                <button class= "button" onClick={TheButton}>Restart Game</button>
+                <button class= "button" onClick={TheRestartButton}>Restart Game</button>
                 <div><button class= "button" onClick={() => Lshowhide()}>Leaderboard </button></div>
                 {LisShown === false ? (
                 <div>
@@ -136,7 +134,7 @@ function App() {
                     <th>Score</th>
                   </tr>
                   <tbody>
-                    {userList.map((user, index) => <Leaderboard key={index} name={user} /> )}
+                    {userList.map((user, index) => <Leaderboard key={index} name={user} />)}
                   </tbody>
                   </table>
                 </div>
