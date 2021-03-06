@@ -37,3 +37,17 @@
   background: white;
   font-family: OCR A Std, monospace;
 }
+
+.Leaderboard table, th, td{ 
+    border: 4px solid white;
+}
+
+.Leaderboard table,td {
+    border: 2px solid white;
+    background-color: #64ffda;
+    color: black;
+}
+
+.Leaderboard th{
+    background-color: black;
+}
