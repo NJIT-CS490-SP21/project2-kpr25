@@ -64,6 +64,20 @@ def on_chat(data):
     print(str(data))
     socketio.emit('login', data, broadcast=True, include_self=False)
 
+@socketio.on('join')
+def on_join(data):
+    """A dummy docstring."""
+    print(str(data))
+    new_user = models.Person(username=data['user'], email='{0}@stuff.com'.format(data['user']))
+    db.session.add(new_user)
+    db.session.commit()
+    all_people = models.Person.query.all()
+    users = []
+    for person in all_people:
+        users.append(person.username)
+    socketio.emit('user_list', {'users': users})
+
+
 @socketio.on('Restart')
 def on_game(data):
     """A dummy docstring."""

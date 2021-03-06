@@ -2,6 +2,7 @@ import { Win } from './Winner';
 import { useState, useEffect, useRef  } from 'react';
 import Board from './Board';
 import {ListItem} from './ListItem.js';
+import {Leaderboard} from './Leaderboard';
 import io from 'socket.io-client';
 
 const socket = io();
@@ -12,8 +13,10 @@ function App() {
     const winner = Win(board);
     const [messages, setMessages] = useState([]); 
     const inputRef = useRef(null); 
+    const joinRef = useRef(null); 
     const [isShown, setShown] = useState(true);
-
+    const [LisShown, LsetShown] = useState(true);
+    const [userList, setUserList] = useState([]);
 
     const handleClick = i => {
         const Copy = [...board];
@@ -37,12 +40,25 @@ function App() {
       socket.emit('login', { message: login });
     }
   }
+  
+   function onClickJoin() {
+    if (joinRef != null) {
+      const username = joinRef.current.value;
+      socket.emit('join', { 'user' : username });
+    }
+  }
     
     useEffect(() => {
     socket.on('login', (data) => {
       console.log('Logged In!');
       console.log(data);
       setMessages(prevMessages => [...prevMessages, data.message, "has logged in!"]);
+    });
+    
+    socket.on('user_list', (data) => {
+      console.log('User List has logged In!');
+      console.log(data);
+      setUserList(data.users);
     });
     
     socket.on('Restart', (data) => {
@@ -65,6 +81,12 @@ function App() {
       return !prevShown;
     });
     }
+    
+    function Lshowhide() {
+    LsetShown((prevShown) => {
+      return !prevShown;
+    });
+    }
 
     return (
       <body class="body">
@@ -75,6 +97,12 @@ function App() {
             <div>*Login before clicking play!*</div>
             <input class= "textbox" ref= {inputRef} type='text'/>
             <button class= "button" onClick={() => onClickButton()}>Login</button>
+            <div>
+            <h3> Join the Leaderboard </h3>
+            <input class= "textbox" ref= {joinRef} type='text'/>
+            <button class= "button" onClick={() => onClickJoin()}>Join</button>
+            {userList.map((user, index) => <ListItem key={index} name={user} />)}
+            </div>
             </div>
             ) : (
             ""
@@ -94,6 +122,27 @@ function App() {
                 'The Next Player: ' + (NextX ? 'X' : 'O')}
                 </p>
                 <button class= "button" onClick={TheButton}>Restart Game</button>
+                <div><button class= "button" onClick={() => Lshowhide()}>Leaderboard </button></div>
+                {LisShown === false ? (
+                <div>
+                <table class="Leaderboard">
+                <thead>
+                  <tr>
+                    <th colspan="2">Leaderboard</th>
+                  </tr>
+                </thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>Score</th>
+                  </tr>
+                  <tbody>
+                    {userList.map((user, index) => <Leaderboard key={index} name={user} /> )}
+                  </tbody>
+                  </table>
+                </div>
+                ) : (
+                ""
+                )}
                 </div>
                 </div>
             ) : (
