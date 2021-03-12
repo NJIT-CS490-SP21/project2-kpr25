@@ -29,7 +29,7 @@ function App() {
 
     function TheRestartButton(){
         const Restart = setBoard;
-        setBoard(Array(9).fill(null))
+        setBoard(Array(9).fill(null));
         socket.emit('Restart', { Start: Restart });
     }
 
@@ -64,7 +64,7 @@ function App() {
     socket.on('Restart', (data) => {
       console.log('Logged In!');
       console.log(data);
-      setBoard(Array(9).fill(null))
+      setBoard(Array(9).fill(null));
     });
       
     socket.on('game', (data) => {
@@ -148,7 +148,7 @@ function App() {
             )}
         </div>
         </body>
-    )
+    );
 }
 
 export default App;
