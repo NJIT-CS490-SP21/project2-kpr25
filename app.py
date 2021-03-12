@@ -1,9 +1,12 @@
+"""System module."""
 import os
-from flask import Flask, send_from_directory, json, session
+from flask import Flask, send_from_directory, json
 from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
+import models
+
 
 load_dotenv(find_dotenv()) #load my API keys from .env
 
@@ -14,13 +17,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 # Gets rid of a warning
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
+DB = SQLAlchemy(app)
 
-import models
-db.create_all()
+DB.create_all()
 
-
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+CORS = CORS(app, resources={r"/*": {"origins": "*"}})
 
 socketio = SocketIO(
     app,
@@ -45,7 +46,6 @@ def on_connect():
         users.append(person.username)
     print(users)
     socketio.emit('user_list', {'users': users})
-   
 
 @socketio.on('disconnect')
 def on_disconnect():
@@ -63,20 +63,30 @@ def on_chat(data):
     """A dummy docstring."""
     print(str(data))
     socketio.emit('login', data, broadcast=True, include_self=False)
-    
 
 @socketio.on('join')
 def on_join(data):
     """A dummy docstring."""
     print(str(data))
     new_user = models.Person(username=data['user'], email='{0}@stuff.com'.format(data['user']))
-    db.session.add(new_user)
-    db.session.commit()
+    DB.session.add(new_user)
+    DB.session.commit()
     all_people = models.Person.query.all()
     users = []
     for person in all_people:
         users.append(person.username)
     socketio.emit('user_list', {'users': users})
+
+def add_user(username):
+    """A dummy docstring."""
+    new_user = models.Person(username=username, email='{0}@stuff.com'.format(username))
+    DB.session.add(new_user)
+    DB.session.commit()
+    all_people = models.Person.query.all()
+    users = []
+    for person in all_people:
+        users.append(person.username)
+    return users
 
 
 @socketio.on('Restart')
@@ -85,11 +95,9 @@ def on_game(data):
     print(str(data))
     socketio.emit('Restart', data, broadcast=True, include_self=False)
 
-# Note we need to add this line so we can import app in the python shell
-if __name__ == "__main__": 
-
+if __name__ == "__main__":
     socketio.run(
         app,
         host=os.getenv('IP', '0.0.0.0'),
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
-)
+        )
