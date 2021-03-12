@@ -10,61 +10,61 @@ import models
 
 load_dotenv(find_dotenv()) #load my API keys from .env
 
-app = Flask(__name__, static_folder='./build/static')
+APP = Flask(__name__, static_folder='./build/static')
 
 # Point SQLAlchemy to your Heroku database
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 # Gets rid of a warning
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-DB = SQLAlchemy(app)
+DB = SQLAlchemy(APP)
 
 DB.create_all()
 
-CORS = CORS(app, resources={r"/*": {"origins": "*"}})
+CORS = CORS(APP, resources={r"/*": {"origins": "*"}})
 
-socketio = SocketIO(
-    app,
+SOCKETIO = SocketIO(
+    APP,
     cors_allowed_origins="*",
     json=json,
     manage_session=False
 )
 
-@app.route('/', defaults={"filename": "index.html"})
-@app.route('/<path:filename>')
+@APP.route('/', defaults={"filename": "index.html"})
+@APP.route('/<path:filename>')
 def index(filename):
     """A dummy docstring."""
     return send_from_directory('./build', filename)
 
-@socketio.on('connect')
+@SOCKETIO.on('connect')
 def on_connect():
     """A dummy docstring."""
     print('User connected!')
     all_people = models.Person.query.all()
     users = []
     for person in all_people:
-        users.append(person.username)
+        users.Append(person.username)
     print(users)
-    socketio.emit('user_list', {'users': users})
+    SOCKETIO.emit('user_list', {'users': users})
 
-@socketio.on('disconnect')
+@SOCKETIO.on('disconnect')
 def on_disconnect():
     """A dummy docstring."""
     print('User disconnected!')
 
-@socketio.on('game')
+@SOCKETIO.on('game')
 def on_tiktac(data):
     """A dummy docstring."""
     print(data)
-    socketio.emit('game', data, broadcast=True, include_self=False)
+    SOCKETIO.emit('game', data, broadcast=True, include_self=False)
 
-@socketio.on('login')
+@SOCKETIO.on('login')
 def on_chat(data):
     """A dummy docstring."""
     print(str(data))
-    socketio.emit('login', data, broadcast=True, include_self=False)
+    SOCKETIO.emit('login', data, broadcast=True, include_self=False)
 
-@socketio.on('join')
+@SOCKETIO.on('join')
 def on_join(data):
     """A dummy docstring."""
     print(str(data))
@@ -74,8 +74,8 @@ def on_join(data):
     all_people = models.Person.query.all()
     users = []
     for person in all_people:
-        users.append(person.username)
-    socketio.emit('user_list', {'users': users})
+        users.Append(person.username)
+    SOCKETIO.emit('user_list', {'users': users})
 
 def add_user(username):
     """A dummy docstring."""
@@ -85,19 +85,19 @@ def add_user(username):
     all_people = models.Person.query.all()
     users = []
     for person in all_people:
-        users.append(person.username)
+        users.Append(person.username)
     return users
 
 
-@socketio.on('Restart')
+@SOCKETIO.on('Restart')
 def on_game(data):
     """A dummy docstring."""
     print(str(data))
-    socketio.emit('Restart', data, broadcast=True, include_self=False)
+    SOCKETIO.emit('Restart', data, broadcast=True, include_self=False)
 
 if __name__ == "__main__":
-    socketio.run(
-        app,
+    SOCKETIO.run(
+        APP,
         host=os.getenv('IP', '0.0.0.0'),
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
         )
