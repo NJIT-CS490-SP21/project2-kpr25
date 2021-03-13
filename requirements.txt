@@ -19,6 +19,7 @@ Flask==1.1.2
 Flask-Cors==3.0.10
 Flask-SocketIO==5.0.1
 Flask-SQLAlchemy==2.1
+futures==3.1.1
 git-remote-codecommit==1.15.1
 idna==2.10
 idna-ssl==1.1.0
@@ -74,5 +75,6 @@ virtualenvwrapper==4.8.4
 wcwidth==0.2.5
 Werkzeug==1.0.1
 wrapt==1.12.1
+yapf==0.31.0
 yarl==1.6.3
 zipp==3.4.0
