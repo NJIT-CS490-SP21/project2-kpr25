@@ -8,3 +8,5 @@ export function Leaderboard(prop) {
     </tr>
   );
 }
+
+export default Leaderboard;

@@ -70,7 +70,7 @@ function App() {
       console.log(data);
       setBoard(Array(9).fill(null));
     });
-
+ 
     socket.on('game', (data) => {
       console.log('Game has started!');
       console.log(data);

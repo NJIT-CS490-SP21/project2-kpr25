@@ -17,3 +17,4 @@ export function Win(squares) {
   }
   return null;
 }
+export default Win;
