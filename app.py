@@ -5,10 +5,8 @@ from flask_socketio import SocketIO
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv, find_dotenv
-import models
 
-
-load_dotenv(find_dotenv()) #load my API keys from .env
+load_dotenv(find_dotenv())  #load my API keys from .env
 
 APP = Flask(__name__, static_folder='./build/static')
 
@@ -17,24 +15,26 @@ APP.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 # Gets rid of a warning
 APP.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-DB = SQLAlchemy(APP)
+db = SQLAlchemy(APP)
 
-DB.create_all()
+import models
+
+db.create_all()
 
 CORS = CORS(APP, resources={r"/*": {"origins": "*"}})
 
-SOCKETIO = SocketIO(
-    APP,
-    cors_allowed_origins="*",
-    json=json,
-    manage_session=False
-)
+SOCKETIO = SocketIO(APP,
+                    cors_allowed_origins="*",
+                    json=json,
+                    manage_session=False)
+
 
 @APP.route('/', defaults={"filename": "index.html"})
 @APP.route('/<path:filename>')
 def index(filename):
     """A dummy docstring."""
     return send_from_directory('./build', filename)
+
 
 @SOCKETIO.on('connect')
 def on_connect():
@@ -43,14 +43,16 @@ def on_connect():
     all_people = models.Person.query.all()
     users = []
     for person in all_people:
-        users.Append(person.username)
+        users.append(person.username)
     print(users)
     SOCKETIO.emit('user_list', {'users': users})
+
 
 @SOCKETIO.on('disconnect')
 def on_disconnect():
     """A dummy docstring."""
     print('User disconnected!')
+
 
 @SOCKETIO.on('game')
 def on_tiktac(data):
@@ -58,34 +60,39 @@ def on_tiktac(data):
     print(data)
     SOCKETIO.emit('game', data, broadcast=True, include_self=False)
 
+
 @SOCKETIO.on('login')
 def on_chat(data):
     """A dummy docstring."""
     print(str(data))
     SOCKETIO.emit('login', data, broadcast=True, include_self=False)
 
+
 @SOCKETIO.on('join')
 def on_join(data):
     """A dummy docstring."""
     print(str(data))
-    new_user = models.Person(username=data['user'], email='{0}@stuff.com'.format(data['user']))
-    DB.session.add(new_user)
-    DB.session.commit()
+    new_user = models.Person(username=data['user'],
+                             email='{0}@stuff.com'.format(data['user']))
+    db.session.add(new_user)
+    db.session.commit()
     all_people = models.Person.query.all()
     users = []
     for person in all_people:
-        users.Append(person.username)
+        users.append(person.username)
     SOCKETIO.emit('user_list', {'users': users})
+
 
 def add_user(username):
     """A dummy docstring."""
-    new_user = models.Person(username=username, email='{0}@stuff.com'.format(username))
-    DB.session.add(new_user)
-    DB.session.commit()
+    new_user = models.Person(username=username,
+                             email='{0}@stuff.com'.format(username))
+    db.session.add(new_user)
+    db.session.commit()
     all_people = models.Person.query.all()
     users = []
     for person in all_people:
-        users.Append(person.username)
+        users.append(person.username)
     return users
 
 
@@ -95,9 +102,10 @@ def on_game(data):
     print(str(data))
     SOCKETIO.emit('Restart', data, broadcast=True, include_self=False)
 
+
 if __name__ == "__main__":
     SOCKETIO.run(
         APP,
         host=os.getenv('IP', '0.0.0.0'),
         port=8081 if os.getenv('C9_PORT') else int(os.getenv('PORT', 8081)),
-        )
+    )

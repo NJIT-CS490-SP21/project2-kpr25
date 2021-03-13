@@ -1,5 +1,5 @@
 .body {
-    background-color: #ff8a65;
+  background-color: #ff8a65;
 }
 
 .Theboard {
@@ -8,46 +8,49 @@
   display: grid;
   margin: auto;
   border: 20px solid #9e9e9e;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
 .placement {
-   font-family: Lucida Handwriting;
-   width: 300px;
-   margin: auto;
-   color:  #64ffda;
-   border: white;
+  font-family: Lucida Handwriting;
+  width: 300px;
+  margin: auto;
+  color: #64ffda;
+  border: white;
 }
 
 .inside {
-    background: #64ffda;
-    font-family: Lucida Handwriting;
-    border: 4px solid white;
-    font-size: 24px;
-    outline: green;
+  background: #64ffda;
+  font-family: Lucida Handwriting;
+  border: 4px solid white;
+  font-size: 24px;
+  outline: green;
 }
 
-.button{
-    background: #9e9e9e;
-    font-family: Lucida Handwriting;
+.button {
+  background: #9e9e9e;
+  font-family: Lucida Handwriting;
 }
 
-.textbox{
+.textbox {
   background: white;
   font-family: OCR A Std, monospace;
 }
 
-.Leaderboard table, th, td{ 
-    border: 4px solid white;
+.Leaderboard table,
+th,
+td {
+  border: 4px solid white;
 }
 
-.Leaderboard table,td {
-    border: 2px solid white;
-    background-color: #64ffda;
-    color: black;
+.Leaderboard table,
+td {
+  border: 2px solid white;
+  background-color: #64ffda;
+  color: black;
 }
 
-.Leaderboard th{
-    background-color: black;
+.Leaderboard th {
+  background-color: black;
 }
