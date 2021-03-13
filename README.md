@@ -32,29 +32,45 @@ Here are my step by step process on how I did this project:
 30. So now, whenever the user clicks a button on the board in one broweser it would also be clicked on the other broweser.
 31. I copied the same exact steps for my socket to pass my login button so both brosers can see who has logged in.
 32. I also coplied the same exact steps for my socket to pass my restart button so both browesers can see if one person restarted the game or not.
-33. After all of that was set up I has to odc make my webpage to look pretty instead of plane white.
-34. So I added some really cool features in my App.css file to change the colors, borders, textboxs, and buttons colors for my page.
-35. I even added a really nice font for when the user logs into the page.
-36.  After that i had to deploy my app outside of cloud 9 so I used Heroku to set that up. 
-37.  So, I npm install -g heroku on my cloud 9 and add my Procfile and the requirements.txt file to create the deployment.
-38.  After I instealled heroku ran the app.
-39.  Here is my link to my Heroku: https://afternoon-spire-03938.herokuapp.com/
-40.  In the end, I created this readme file other people to follow how I did this project.
+33. After you have the game setup now it is time to set up the database. 
+34. We need to add a leaderboard for the who if the person joins that name is set up in our database.
+35. Before we create the database we need to create a our new heroku app and we do that by running heroku create.
+36. After that we need create a new remote DB for our heroku add so we run heroku addons:create heroku-postgresql:hobby-dev (If that doesn't work, add a -a {your-app-name} to the end of the command, no braces).
+37. After that we run Heroku config, then make a .env file.
+38. In the .env file you add DATABASE_URL='your heroku prostgresql here' and save it.
+39.  After we set up and created out database and heroku we need to store data in the databae.
+40.  So we make a models file and add the id, username and the email in there and set that file up.
+41.  Then, you need socket.io emit on to your app.py file so that all the data is actully getting stored in your database.
+42.  You emit those changes into the connot and the join function for it to appear in the terminal, but we need to appear those names in the UI our app.
+43.  So we go on to our app.js file, make a new const for userList from app.py, make a new button for onClickJoin and then emit those changes in the UseEffect for both browers to communite with eachother.
+44.  We have nothing showing up in the UI after that we go on the bottom to our return statments and then return the textbox and the button.
+45.  After we have that set up, we have to set up the leaderboard 
+46.  So, I made a new component called leaderboard.js and added a leader board using this helpful link that professor provided: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table.
+47.  After I got the leaderboard to set up props for my list of users who join to appear on the leaderboard. 
+48.  Now, everyone person who joins the game will be stored in my leaderboard.
+49.  If the same person joins again, that person will be still stored in the database.
+50.  Every person will now have a chance to compete in the game.
+51.  I also set up so that when they join they automaticlly start with the score of 100.
+52.  After all of that was set up I has to odc make my webpage to look pretty instead of plane white.
+53.  So I added some really cool features in my App.css file to change the colors and the borders for my leaderboard for my page.
+54.  After that i had to deploy my app outside of cloud 9 so I used Heroku to set that up. 
+55.  So, I npm install -g heroku on my cloud 9 and add my Procfile and the requirements.txt file to create the deployment.
+56.  After I instealled heroku ran the app.
+57.  Here is my link to my Heroku: https://shielded-ravine-96367.herokuapp.com/
+58.  In the end, I created this readme file other people to follow how I did this project.
 
-Here are some known problems that I ran across on working this project:
-1. I had a lot of trouble using react and how react works different from other languages, but I need to get more used to that.
-2. I was not able to get where the spectators can login and would not be able to play the game.
-3. I need to get more used to socket because setting it up was tough was for me.
-4. I might implment a feature where the when the game finished, there would be line that goes across the baord on how the person won.
-5. I might also implment a feature where if a person won, there would be big trophy that appears on the page showing the person won.
-6. I might also implement a feature where there would two board working at the same time for users to play the game.
+Here are my known problems and how I would address them if I had more time:
+1. I had trouble getting the leader setup with the all different names html to set that up but I would do more examples on my own to help me get used to it.
+2. I could not figure out how to update the leaderboard once someone wins the game but I would have maybe went to office hours for help for that.
+3. I wanted to move my leader on the right hand side but if I had more time I would have went only for resources to get that help.
+4. I could not figure out a way to rank them from highest to lowest but if I had more time, I would found more online resouces to help me out.
+5. I might have implemented a feature for a person to play with the worlds best players from different tik tac toe website API.
+6. I might have implemented a feature where if a person wins, the person is directly put into another room to play a computer.
 
-Here are some technical issues that I ran across working on this project:
-1. I socket.io was not working so I went office hours and TA Kristianna was able to help me out.
-2. My Heroku was not deploying properly so I checked in slack and other classmates of mine were having the same problem but I saw how they resolved it and so did I.
-3. I also ran into a problem where I could not change my origin name so I went on google and https://xenovation.com/blog/source-control-management/git/how-to-change-remote-git-repository helped me out.
-4. I again ran into the issue where I did not the different types of colors in CSS so I went to HW4 and this link https://material-ui.com/customization/color/#2014-material-design-color-palettes provided by the professor helped me out on how to change my colors. 
-5. I wanted to change borders for my board but did not know how but https://www.w3schools.com/css/css_border.asp helped me on how to change them.
-6. I also ran into a issue where my baord was not changing to X but when I saw slack, I saw some of my classmates where having the same issue but professor broke up the steps and then I got it. 
-7. I also did not know how to show and hide the board but in the lecture of Thursday, professor showed it to us and I was able to figure it out.
-8. I ran into an issue where my buildpacks was not working when creating my app onto heroku but when I asked my slack, one of classmates helped me out and I got that function to work sucessfully.
+Here are my technical issues and how you solved it: 
+1. I had a lot of trouble to get my points to appear in the same row as my scores but this website helpting me a lot: https://www.w3schools.com/html/html_tables.asp.
+2. I also had trouble where I got import errors, but from a slack from my classmate, it helped me resolve that issue.
+3. I had trouble starting up milestone_2 branch, but AJ one my classmate wrote a slack post on how to start milestone_2 branch: https://cs490spring21.slack.com/archives/C01N2QP4ZSS/p1614627355385400
+4. I had trouble getting out of my git pull command so this stackoverflow website helped me get out of it: https://stackoverflow.com/questions/19085807/please-enter-a-commit-message-to-explain-why-this-merge-is-necessary-especially
+5. I had trouble setting up the database at first and was very lost but Lecture 12 on how doing database work with flask and python helped me a lot.
+6. I also forgot on how to set up the .env file on how to not show it on github so Lecture 5, demo 3 helped me a lot on how to hide my DATABASE_URL.
