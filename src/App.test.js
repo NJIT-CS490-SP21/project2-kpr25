@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-test('The login is gone', () => {
+test('The login is gone after logging In', () => {
   const result = render(<App />);
 
   const LoginButton = screen.getByText('Login');
