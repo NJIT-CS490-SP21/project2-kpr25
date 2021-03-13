@@ -70,7 +70,7 @@ Here are my known problems and how I would address them if I had more time:
 Here are my technical issues and how you solved it: 
 1. I had a lot of trouble to get my points to appear in the same row as my scores but this website helpting me a lot: https://www.w3schools.com/html/html_tables.asp.
 2. I also had trouble where I got import errors, but from a slack from my classmate, it helped me resolve that issue.
-3. I had trouble starting up milestone_2 branch, but AJ one my classmate wrote a slack post on how to start milestone_2 branch: https://cs490spring21.slack.com/archives/C01N2QP4ZSS/p1614627355385400
+3. I had trouble starting up main branch, but AJ one my classmate wrote a slack post on how to start milestone_2 branch: https://cs490spring21.slack.com/archives/C01N2QP4ZSS/p1614627355385400
 4. I had trouble getting out of my git pull command so this stackoverflow website helped me get out of it: https://stackoverflow.com/questions/19085807/please-enter-a-commit-message-to-explain-why-this-merge-is-necessary-especially
 5. I had trouble setting up the database at first and was very lost but Lecture 12 on how doing database work with flask and python helped me a lot.
 6. I also forgot on how to set up the .env file on how to not show it on github so Lecture 5, demo 3 helped me a lot on how to hide my DATABASE_URL.
