@@ -56,7 +56,7 @@ Here are my step by step process on how I did this project:
 54.  After that i had to deploy my app outside of cloud 9 so I used Heroku to set that up. 
 55.  So, I npm install -g heroku on my cloud 9 and add my Procfile and the requirements.txt file to create the deployment.
 56.  After I instealled heroku ran the app.
-57.  Here is my link to my Heroku: https://shielded-ravine-96367.herokuapp.com/
+57.  Here is my link to my Heroku: https://guarded-ravine-16450.herokuapp.com/
 58.  In the end, I created this readme file other people to follow how I did this project.
 
 Here are my known problems and how I would address them if I had more time:
