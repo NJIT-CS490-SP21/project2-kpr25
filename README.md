@@ -29,7 +29,7 @@ Here are my step by step process on how I did this project:
 27. After that, in my app.py, I added a new event listener called game that prints out whatever data was passed in the event.
 28. After that I updated the  event listenerso that when the server actually emits an event to the rest of the clients with data of the cell that was clicked.
 29. In my Board.js file, I add an event listener oof socket.on in useEffect for my click event to be emitted by server and I set that up with my name game.
-30. So now, whenever the user clicks a button on the board in one broweser it would also be clicked on the other broweser.
+30. So now, whenever the user clicks a button on the board in one broweser it would also be clicked on the other browser.
 31. I copied the same exact steps for my socket to pass my login button so both brosers can see who has logged in.
 32. I also coplied the same exact steps for my socket to pass my restart button so both browesers can see if one person restarted the game or not.
 33. After you have the game setup now it is time to set up the database. 
