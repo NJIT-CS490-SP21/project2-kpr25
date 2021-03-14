@@ -57,7 +57,7 @@ Here are my step by step process on how I did this project:
 55.  So, I npm install -g heroku on my cloud 9 and add my Procfile and the requirements.txt file to create the deployment.
 56.  After I instealled heroku ran the app.
 57.  Here is my link to my Heroku: https://guarded-ravine-16450.herokuapp.com/
-58.  In the end, I created this readme file other people to follow along on how I did this project.
+58.  In the end, I created this readme file other people to follow along on how I did this project and added all my files on github here.
 
 Here are my known problems and how I would address them if I had more time:
 1. I had trouble getting the leader setup with the all different names html to set that up but I would do more examples on my own to help me get used to it.
