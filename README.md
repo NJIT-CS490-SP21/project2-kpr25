@@ -36,7 +36,7 @@ Here are my step by step process on how I did this project:
 34. We need to add a leaderboard for the who if the person joins that name is set up in our database.
 35. Before we create the database we need to create a our new heroku app and we do that by running heroku create.
 36. After that we need create a new remote DB for our heroku add so we run heroku addons:create heroku-postgresql:hobby-dev (If that doesn't work, add a -a {your-app-name} to the end of the command, no braces).
-37. After that we run Heroku config, then make a .env file.
+37. After that we run Heroku config, then make a .env file to add my url in there.
 38. In the .env file you add DATABASE_URL='your heroku prostgresql here' and save it.
 39.  After we set up and created out database and heroku we need to store data in the databae.
 40.  So we make a models file and add the id, username and the email in there and set that file up.
